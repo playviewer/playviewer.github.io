@@ -1,7 +1,5 @@
 <html>
   <head>
-      <script>
-      </script>
       <style>
       table, th, td {
         border: 1px solid black;
@@ -10,17 +8,66 @@
   </head>
   <body>
     <h1>PVR</h1>
+    <table>
+      <tr id="modes"></tr>
+    </table>
+    <hr>
     <table id="ranking">
-      <tr>
-        <th>Pos</th>
-        <th>Team</th>
-        <th>Win</th>
-        <th>Loss</th>
-        <th>Game Diff</th>
-      </tr>
     </table>
     <script>
+    function Get(yourUrl) { // credit https://stackoverflow.com/a/22790025/5038158
+      var Httpreq = new XMLHttpRequest(); // a new request
+      Httpreq.open("GET",yourUrl,false);
+      Httpreq.send(null);
+      return Httpreq.responseText;
+    }
 
+    function GetURLParams() {
+      var url = window.location.href;
+      var regex = /[?&]([^=#]+)=([^&#]*)/g,
+        params = {},
+        match;
+      while (match = regex.exec(url)) {
+        params[match[1]] = match[2];
+      }
+      return params;
+    }
+    data = JSON.parse(Get("https://playviewer.github.io/data.json")); // text
+
+    for (var i = 0; i < data.teamRecords.length; i++) {
+      document.getElementById("modes").innerHTML = document.getElementById("modes").innerHTML + "<td><button onclick='tableUpdate(\""+data.teamRecords[i].type+"\")'>" + data.teamRecords[i].type + "</button></td>"
+    }
+
+    function tableUpdate(type) {
+      var defaultTable = "<tr>"
+      defaultTable = defaultTable + "<th>Pos</th>"
+      defaultTable = defaultTable + "<th>Team</th>"
+      defaultTable = defaultTable + "<th>Win</th>"
+      defaultTable = defaultTable + "<th>Loss</th>"
+      defaultTable = defaultTable + "<th>Game Diff</th>"
+      defaultTable = defaultTable + "</tr>"
+      document.getElementById("ranking").innerHTML = defaultTable
+      index = 0
+      for (var i = 0; i < data.teamRecords.length; i++) {
+        if (data.teamRecords[i].type == type) {
+          index = i
+        }
+      }
+      for (var i = 0; i < data.teamRecords[index].phaseResults.length; i++) {
+        teamData = data.teamRecords[index].phaseResults[i]
+        row = "<tr>"
+        row = row + "<th>"+(i+1)+"</th>"
+        row = row + "<th>"+"<a href=\"https://playviewer.github.io/team.html?id="+teamData.team.id+"\"><div>Team: "+teamData.team.name+"</div><div>School: "+teamData.team.school.name+"</div></a></th>"
+        row = row + "<th>"+teamData.record.won+"</th>"
+        row = row + "<th>"+teamData.record.lost+"</th>"
+        row = row + "<th>Not sure how to calc this yet, so will figure this out later.</th>"
+        row = row + "</tr>"
+        document.getElementById("ranking").innerHTML = document.getElementById("ranking").innerHTML + row
+      }
+      console.log(data.teamRecords[index].phaseResults)
+    }
+
+    tableUpdate(data.teamRecords[1].type)
     </script>
   </body>
 </html>
