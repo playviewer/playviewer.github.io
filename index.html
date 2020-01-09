@@ -22,16 +22,6 @@
       return Httpreq.responseText;
     }
 
-    function GetURLParams() {
-      var url = window.location.href;
-      var regex = /[?&]([^=#]+)=([^&#]*)/g,
-        params = {},
-        match;
-      while (match = regex.exec(url)) {
-        params[match[1]] = match[2];
-      }
-      return params;
-    }
     data = JSON.parse(Get("https://playviewer.github.io/data.json")); // text
 
     for (var i = 0; i < data.teamRecords.length; i++) {
