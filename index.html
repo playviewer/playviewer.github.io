@@ -46,11 +46,11 @@
       for (var i = 0; i < data.teamRecords[index].phaseResults.length; i++) {
         teamData = data.teamRecords[index].phaseResults[i]
         row = "<tr>"
-        row = row + "<th>"+(i+1)+"</th>"
-        row = row + "<th>"+"<a href=\"https://playviewer.github.io/team.html?id="+teamData.team.id+"\"><div>Team: "+teamData.team.name+"</div><div>School: "+teamData.team.school.name+"</div></a></th>"
-        row = row + "<th>"+teamData.record.won+"</th>"
-        row = row + "<th>"+teamData.record.lost+"</th>"
-        row = row + "<th>Not sure how to calc this yet, so will figure this out later.</th>"
+        row = row + "<td>"+(i+1)+"</td>"
+        row = row + "<td>"+"<a href=\"https://playviewer.github.io/team.html?id="+teamData.team.id+"\"><div>Team: "+teamData.team.name+"</div><div>School: "+teamData.team.school.name+"</div></a></td>"
+        row = row + "<td>"+teamData.record.won+"</td>"
+        row = row + "<td>"+teamData.record.lost+"</td>"
+        row = row + "<td>Not sure how to calc this yet, so will figure this out later.</td>"
         row = row + "</tr>"
         document.getElementById("ranking").innerHTML = document.getElementById("ranking").innerHTML + row
       }
