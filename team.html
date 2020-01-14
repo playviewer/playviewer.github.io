@@ -4,6 +4,9 @@
     table, th, td {
       border: 1px solid black;
     }
+    td {
+      text-align: center;
+    }
     </style>
   </head>
   <body>
@@ -59,25 +62,25 @@
     members = teams[index][1].team.members
     for (var i = 0; i < members.length; i++) {
       row = "<tr>"
-      row = row + "<th>"+members[i].name+"</th>"
-      row = row + "<th>"+members[i].steamAccount.steamPersonaName+"</th>"
-      row = row + "<th><a href=\"https://rocketleague.tracker.network/profile/steam/"+members[i].steamAccount.steamId+"\">Rank</a></th>"
+      row = row + "<td>"+members[i].name+"</td>"
+      row = row + "<td>"+members[i].steamAccount.steamPersonaName+"</td>"
+      row = row + "<td><a href=\"https://rocketleague.tracker.network/profile/steam/"+members[i].steamAccount.steamId+"\">Rank</a></td>"
       row = row + "</tr>"
       document.getElementById("players").innerHTML = document.getElementById("players").innerHTML + row
     }
 
     for (var i = 0; i < teams[index][2].length; i++) {
       row = "<tr>"
-      row = row + "<th>"+teams[index][2][i].scheduledStartsAt.split("T")[0]+"</th>"
-      row = row + "<th>"+teams[index][2][i].status+"</th>"
+      row = row + "<td>"+teams[index][2][i].scheduledStartsAt.split("T")[0]+"</td>"
+      row = row + "<td>"+teams[index][2][i].status+"</td>"
       if (teams[index][2][i].matchResults[0].team.name == teams[index][1].team.name) {
-        row = row + "<th><a href=\"https://playviewer.github.io/team.html?id="+teams[index][2][i].matchResults[1].team.id+"\">"+teams[index][2][i].matchResults[1].team.name+"</a></th>"
-        row = row + "<th>"+teams[index][2][i].matchResults[0].gamesWon+"</th>"
-        row = row + "<th>"+teams[index][2][i].matchResults[0].gamesLost+"</th>"
+        row = row + "<td><a href=\"https://playviewer.github.io/team.html?id="+teams[index][2][i].matchResults[1].team.id+"\">"+teams[index][2][i].matchResults[1].team.name+"</a></td>"
+        row = row + "<td>"+teams[index][2][i].matchResults[0].gamesWon+"</td>"
+        row = row + "<td>"+teams[index][2][i].matchResults[0].gamesLost+"</td>"
       } else {
-        row = row + "<th><a href=\"https://playviewer.github.io/team.html?id="+teams[index][2][i].matchResults[0].team.id+"\">"+teams[index][2][i].matchResults[0].team.name+"</a></th>"
-        row = row + "<th>"+teams[index][2][i].matchResults[1].gamesWon+"</th>"
-        row = row + "<th>"+teams[index][2][i].matchResults[1].gamesLost+"</th>"
+        row = row + "<td><a href=\"https://playviewer.github.io/team.html?id="+teams[index][2][i].matchResults[0].team.id+"\">"+teams[index][2][i].matchResults[0].team.name+"</a></td>"
+        row = row + "<td>"+teams[index][2][i].matchResults[1].gamesWon+"</td>"
+        row = row + "<td>"+teams[index][2][i].matchResults[1].gamesLost+"</td>"
       }
       row = row + "</tr>"
       document.getElementById("mHistory").innerHTML = document.getElementById("mHistory").innerHTML + row
