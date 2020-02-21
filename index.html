@@ -26,12 +26,9 @@
     }
 
     data = JSON.parse(Get("https://playviewer.github.io/data.json")); // text
+    document.getElementById("modes").innerHTML = document.getElementById("modes").innerHTML + "<td><button onclick='tableUpdate()'>" + data.teamRecords.type + "</button></td>"
 
-    for (var i = 0; i < data.teamRecords.length; i++) {
-      document.getElementById("modes").innerHTML = document.getElementById("modes").innerHTML + "<td><button onclick='tableUpdate(\""+data.teamRecords[i].type+"\")'>" + data.teamRecords[i].type + "</button></td>"
-    }
-
-    function tableUpdate(type) {
+    function tableUpdate() {
       var defaultTable = "<tr>"
       defaultTable = defaultTable + "<th>Pos</th>"
       defaultTable = defaultTable + "<th>Team</th>"
@@ -40,14 +37,8 @@
       defaultTable = defaultTable + "<th>Game Diff</th>"
       defaultTable = defaultTable + "</tr>"
       document.getElementById("ranking").innerHTML = defaultTable
-      index = 0
-      for (var i = 0; i < data.teamRecords.length; i++) {
-        if (data.teamRecords[i].type == type) {
-          index = i
-        }
-      }
-      for (var i = 0; i < data.teamRecords[index].phaseResults.length; i++) {
-        teamData = data.teamRecords[index].phaseResults[i]
+      for (var i = 0; i < data.teamRecords.phaseResults.length; i++) {
+        teamData = data.teamRecords.phaseResults[i]
         row = "<tr>"
         row = row + "<td>"+(i+1)+"</td>"
         row = row + "<td>"+"<a href=\"https://playviewer.github.io/team.html?id="+teamData.team.id+"\"><div>Team: "+teamData.team.name+"</div><div>School: "+teamData.team.school.name+"</div></a></td>"
@@ -57,10 +48,10 @@
         row = row + "</tr>"
         document.getElementById("ranking").innerHTML = document.getElementById("ranking").innerHTML + row
       }
-      console.log(data.teamRecords[index].phaseResults)
+      console.log(data.teamRecords.phaseResults)
     }
 
-    tableUpdate(data.teamRecords[1].type)
+    tableUpdate()
     </script>
   </body>
 </html>
