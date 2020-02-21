@@ -84,7 +84,9 @@
         row = row + "<td>"+teams[index][2][i].matchResults[1].gamesLost+"</td>"
       }
       time = new Date(teams[index][2][i].scheduledStartsAt.split("T")[0]).getTime()
-      if (time < 1581870035000) {
+      if (time < 1577294432000) {
+        row = row + "<td>Last Season</td>"
+      } else if (time > 1577294432000 && time < 1581870035000) {
         row = row + "<td>Preseason</td>"
       } else if (time > 1581870035000 && time < 1587054035000) {
         row = row + "<td>Regular Season</td>"
