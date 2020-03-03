@@ -41,7 +41,7 @@
         teamData = data.teamRecords.phaseResults[i]
         row = "<tr>"
         row = row + "<td>"+(i+1)+"</td>"
-        row = row + "<td>"+"<a href=\"https://playviewer.github.io/team.html?id="+teamData.team.id+"\"><div>Team: "+teamData.team.name+"</div><div>School: "+teamData.team.school.name+"</div></a></td>"
+        row = row + "<td>"+"<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://playviewer.github.io/team.html?id="+teamData.team.id+"\"><div>Team: "+teamData.team.name+"</div><div>School: "+teamData.team.school.name+"</div></a></td>"
         row = row + "<td>"+teamData.record.won+"</td>"
         row = row + "<td>"+teamData.record.lost+"</td>"
         row = row + "<td>Not sure how to calc this yet, so will figure this out later.</td>"
