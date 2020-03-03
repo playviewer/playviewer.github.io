@@ -16,7 +16,7 @@
       <tr>
         <th>Name</th>
         <th>IGN</th>
-        <th>Ranks</th>
+        <th>Ranks <button type="button" onclick="openAllRanks()" title="If this button doesn't work, you need to disable the pop up blocker for this page.">Open All Ranks</button><p></p></th>
       </tr>
     </table>
     <h3>Match History</h3>
@@ -101,6 +101,12 @@
       }
       row = row + "</tr>"
       document.getElementById("mHistory").innerHTML = document.getElementById("mHistory").innerHTML + row
+    }
+
+    function openAllRanks() {
+      for (var i = 0; i < members.length; i++) {
+        window.open("https://rocketleague.tracker.network/profile/steam/"+members[i].steamAccount.steamId)
+      }
     }
 
     </script>
