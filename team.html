@@ -65,7 +65,7 @@
       row = "<tr>"
       row = row + "<td>"+members[i].name+"</td>"
       row = row + "<td>"+members[i].steamAccount.steamPersonaName+"</td>"
-      row = row + "<td><a target="_blank" rel="noopener noreferrer" href=\"https://rocketleague.tracker.network/profile/steam/"+members[i].steamAccount.steamId+"\">Rank</a></td>"
+      row = row + "<td><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://rocketleague.tracker.network/profile/steam/"+members[i].steamAccount.steamId+"\">Rank</a></td>"
       row = row + "</tr>"
       document.getElementById("players").innerHTML = document.getElementById("players").innerHTML + row
     }
@@ -75,11 +75,11 @@
       row = row + "<td>"+teams[index][2][i].scheduledStartsAt.split("T")[0]+"</td>"
       row = row + "<td>"+teams[index][2][i].status+"</td>"
       if (teams[index][2][i].matchResults[0].team.name == teams[index][1].team.name) {
-        row = row + "<td><a target="_blank" rel="noopener noreferrer" href=\"https://playviewer.github.io/team.html?id="+teams[index][2][i].matchResults[1].team.id+"\">"+teams[index][2][i].matchResults[1].team.name+"</a></td>"
+        row = row + "<td><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://playviewer.github.io/team.html?id="+teams[index][2][i].matchResults[1].team.id+"\">"+teams[index][2][i].matchResults[1].team.name+"</a></td>"
         row = row + "<td>"+teams[index][2][i].matchResults[0].gamesWon+"</td>"
         row = row + "<td>"+teams[index][2][i].matchResults[0].gamesLost+"</td>"
       } else {
-        row = row + "<td><a href=\"https://playviewer.github.io/team.html?id="+teams[index][2][i].matchResults[0].team.id+"\">"+teams[index][2][i].matchResults[0].team.name+"</a></td>"
+        row = row + "<td><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://playviewer.github.io/team.html?id="+teams[index][2][i].matchResults[0].team.id+"\">"+teams[index][2][i].matchResults[0].team.name+"</a></td>"
         row = row + "<td>"+teams[index][2][i].matchResults[1].gamesWon+"</td>"
         row = row + "<td>"+teams[index][2][i].matchResults[1].gamesLost+"</td>"
       }
