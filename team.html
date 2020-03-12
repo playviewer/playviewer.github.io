@@ -72,7 +72,7 @@
 
     for (var i = 0; i < teams[index][2].length; i++) {
       row = "<tr>"
-      row = row + "<td>"+teams[index][2][i].scheduledStartsAt.split("T")[0]+"</td>"
+      row = row + "<td><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://app.playvs.com/app/match/"+teams[index][2][i].id+"/overview\">"+teams[index][2][i].scheduledStartsAt.split("T")[0]+"</a></td>"
       row = row + "<td>"+teams[index][2][i].status+"</td>"
       if (teams[index][2][i].matchResults[0].team.name == teams[index][1].team.name) {
         row = row + "<td><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://playviewer.github.io/team.html?id="+teams[index][2][i].matchResults[1].team.id+"\">"+teams[index][2][i].matchResults[1].team.name+"</a></td>"
